@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  {% for postObj in posts_list %}
+    <iframe
+      width="320"
+      height="440"
+      src="{{postObj.url}}"
+      frameborder="0"
+    ></iframe>
+  {% endfor %}
+{% endblock body %}
+
+

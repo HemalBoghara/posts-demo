@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Posts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    {% for category in resultCategories %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" 
+        {% comment %} href=" {% url 'post-details' category.id %}" {% endcomment %}
+        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{category.name|capfirst}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for subCategory in resultSubCategories %}
+            {% if category.id == subCategory.parent_id %}
+                <a class="dropdown-item" href="{% url 'post-details' subCategory.id %}">{{subCategory.name|capfirst}}</a>
+            {% endif %}
+        {% endfor %}
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</nav>

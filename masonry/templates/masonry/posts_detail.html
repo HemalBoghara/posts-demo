@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% block body %} 
+
+    {% for post in ResultPost %}
+      <iframe
+        width="320"
+        height="440"
+        src="{{post.url}}"
+        frameborder="0"
+      ></iframe>
+      {{post.id}}
+    {% endfor %}
+    
+{% endblock body %}
